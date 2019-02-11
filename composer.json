@@ -1,0 +1,16 @@
+{
+    "name": "rbdwllr/atlantic-city",
+    "description": "A replica of the default WordPress plugin Hello Dolly, but for composer powered WordPress and for the song Atlantic City.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RobDWaller",
+            "email": "rdwaller1984@googlemail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "10up/wp_mock": "^0.4"
+    }
+}
