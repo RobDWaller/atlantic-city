@@ -12,5 +12,11 @@
     "require": {},
     "require-dev": {
         "10up/wp_mock": "^0.4"
+    },
+    "autload": {
+        "psr-4": {
+            "App\\": "src",
+            "Tests\\": "test"
+        }
     }
 }
