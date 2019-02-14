@@ -48,4 +48,29 @@ class AtlanticCity
     {
         return self::LYRICS;
     }
+
+    public function getRandomLyric(): string
+    {
+        return $this->getLyrics()[rand(0, 34)];
+    }
+
+    private function getCss(): string
+    {
+        $float = is_rtl() ? 'left' : 'right';
+
+        return "<style type='text/css'>" .
+            "#atlantic {" .
+                "float: $float;" .
+                "padding-$float: 15px;" .
+                "padding-top: 5px;" .
+                "margin: 0;" .
+                "font-size: 11px;" .
+            "}" .
+            "</style>";
+    }
+
+    private function getHtmlOutput(): string
+    {
+        return '<p id="atlantic">' . $this->getRandomLyric() . '</p>';
+    }
 }
