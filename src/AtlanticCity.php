@@ -73,4 +73,14 @@ class AtlanticCity
     {
         return '<p id="atlantic">' . $this->getRandomLyric() . '</p>';
     }
+
+    public function atlanticCity(): void
+    {
+        echo $this->getHtmlOutput();
+    }
+
+    public function atlanticCss(): void
+    {
+        echo $this->getCss();
+    }
 }
