@@ -20,7 +20,9 @@ class AtlanticCityTest extends TestCase
     {
         $atlantic = new AtlanticCity();
 
-        $result = $atlantic->getLyrics();
+        $method = new ReflectionMethod(AtlanticCity::class, 'getLyrics');
+        $method->setAccessible(true);
+        $result = $method->invoke($atlantic);
 
         $this->assertCount(35, $result);
     }
@@ -29,7 +31,9 @@ class AtlanticCityTest extends TestCase
     {
         $atlantic = new AtlanticCity();
 
-        $result = $atlantic->getLyrics();
+        $method = new ReflectionMethod(AtlanticCity::class, 'getLyrics');
+        $method->setAccessible(true);
+        $result = $method->invoke($atlantic);
 
         $this->assertSame("Well they blew up the chicken man in Philly last night", $result[0]);
         $this->assertSame("Now baby everything dies baby that's a fact", $result[16]);
@@ -40,13 +44,19 @@ class AtlanticCityTest extends TestCase
     {
         $atlantic = new AtlanticCity();
 
-        $result1 = $atlantic->getRandomLyric();
-        $result2 = $atlantic->getRandomLyric();
-        $result3 = $atlantic->getRandomLyric();
+        $method = new ReflectionMethod(AtlanticCity::class, 'getRandomLyric');
+        $method->setAccessible(true);
+        $result1 = $method->invoke($atlantic);
+        $result2 = $method->invoke($atlantic);
+        $result3 = $method->invoke($atlantic);
 
-        $this->assertTrue(in_array($result1, $atlantic->getLyrics()));
-        $this->assertTrue(in_array($result2, $atlantic->getLyrics()));
-        $this->assertTrue(in_array($result3, $atlantic->getLyrics()));
+        $method = new ReflectionMethod(AtlanticCity::class, 'getLyrics');
+        $method->setAccessible(true);
+        $lyrics = $method->invoke($atlantic);
+
+        $this->assertTrue(in_array($result1, $lyrics));
+        $this->assertTrue(in_array($result2, $lyrics));
+        $this->assertTrue(in_array($result3, $lyrics));
     }
 
     public function testGetCss()

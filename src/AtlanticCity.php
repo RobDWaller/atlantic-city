@@ -44,12 +44,12 @@ class AtlanticCity
         "Meet me tonight in Atlantic City"
     ];
 
-    public function getLyrics(): array
+    private function getLyrics(): array
     {
         return self::LYRICS;
     }
 
-    public function getRandomLyric(): string
+    private function getRandomLyric(): string
     {
         return $this->getLyrics()[rand(0, 34)];
     }
