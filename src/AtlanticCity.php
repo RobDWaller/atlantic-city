@@ -83,4 +83,11 @@ class AtlanticCity
     {
         echo $this->getCss();
     }
+
+    public function run(): void
+    {
+        add_action('admin_notices', [$this, 'atlanticCity']);
+
+        add_action('admin_head', [$this, 'atlanticCss']);
+    }
 }

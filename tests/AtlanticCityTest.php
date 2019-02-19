@@ -9,6 +9,14 @@ use ReflectionMethod;
 
 class AtlanticCityTest extends TestCase
 {
+    public function setUp() {
+		WP_Mock::setUp();
+	}
+
+	public function tearDown() {
+		WP_Mock::tearDown();
+	}
+
     public function testAtlanticCity()
     {
         $atlantic = new AtlanticCity();
@@ -119,6 +127,17 @@ class AtlanticCityTest extends TestCase
         $method->setAccessible(true);
         $result = $method->invoke($atlantic);
 
-        $this->assertRegExp('/^<p id="atlantic">[a-zA-Z\s\.\']*<\/p>$/', $result);
+        $this->assertRegExp('/^<p id="atlantic">[a-zA-Z\s\.\',]*<\/p>$/', $result);
+    }
+
+    public function testRun()
+    {
+        $atlantic = new AtlanticCity();
+
+        WP_Mock::expectActionAdded('admin_notices', [$atlantic, 'atlanticCity']);
+
+        WP_Mock::expectActionAdded('admin_head', [$atlantic, 'atlanticCss']);
+
+        $this->assertNull($atlantic->run());
     }
 }
