@@ -1,3 +1,4 @@
+
 <?php
 /**
  * @package Atlantic City
@@ -11,8 +12,11 @@ Author: Rob Waller
 Version: 0.1.0-alpha
 Author URI: http://rbrt.wllr.info
 */
+$vendor = 'vendor/autoload.php';
 
-require 'vendor/autoload.php';
+if (file_exists($vendor)) {
+    require $vendor;
+}
 
 $atlantic = new App\AtlanticCity;
 $atlantic->run();
