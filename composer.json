@@ -19,5 +19,11 @@
             "App\\": "src",
             "Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "pipeline": [
+            "vendor/bin/phpunit",
+            "vendor/bin/phpstan analyse -l 7 src tests"
+        ]
     }
 }
