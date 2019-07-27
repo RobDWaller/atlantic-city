@@ -11,13 +11,13 @@ class AtlanticCityTest extends TestCase
 {
     public function setUp(): void
     {
-		WP_Mock::setUp();
-	}
+        WP_Mock::setUp();
+    }
 
-	public function tearDown(): void
+    public function tearDown(): void
     {
-		WP_Mock::tearDown();
-	}
+        WP_Mock::tearDown();
+    }
 
     public function testAtlanticCity()
     {
@@ -82,7 +82,8 @@ class AtlanticCityTest extends TestCase
         $method->setAccessible(true);
         $result = $method->invoke($atlantic);
 
-        $this->assertSame("<style type='text/css'>" .
+        $this->assertSame(
+            "<style type='text/css'>" .
             "#atlantic {" .
                 "float: left;" .
                 "padding-left: 15px;" .
@@ -108,7 +109,8 @@ class AtlanticCityTest extends TestCase
         $method->setAccessible(true);
         $result = $method->invoke($atlantic);
 
-        $this->assertSame("<style type='text/css'>" .
+        $this->assertSame(
+            "<style type='text/css'>" .
             "#atlantic {" .
                 "float: right;" .
                 "padding-right: 15px;" .
