@@ -171,4 +171,42 @@ class AtlanticCityTest extends TestCase
 
         $this->assertNull($atlantic->run());
     }
+
+    /**
+     * @covers App\AtlanticCity::atlanticCity
+     * @uses App\AtlanticCity::getHtmlOutput
+     * @uses App\AtlanticCity::getLyrics
+     * @uses App\AtlanticCity::getRandomLyric
+     */
+    public function testAtlanticCityOutput()
+    {
+        $atlantic = new AtlanticCity();
+
+        $this->expectOutputRegex('/^<p id="atlantic">.+<\/p>$/');
+
+        $atlantic->atlanticCity();
+    }
+
+    /**
+     * @covers App\AtlanticCity::atlanticCss
+     * @uses App\AtlanticCity::getCss
+     */
+    public function testAtlanticCssOutput()
+    {
+        $atlantic = new AtlanticCity();
+
+        $this->expectOutputString(
+            "<style type='text/css'>" .
+            "#atlantic {" .
+                "float: right;" .
+                "padding-right: 15px;" .
+                "padding-top: 5px;" .
+                "margin: 0;" .
+                "font-size: 11px;" .
+            "}" .
+            "</style>"
+        );
+
+        $atlantic->atlanticCss();
+    }
 }
