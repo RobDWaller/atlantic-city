@@ -19,6 +19,9 @@ class AtlanticCityTest extends TestCase
         WP_Mock::tearDown();
     }
 
+    /**
+     * @covers App\AtlanticCity
+     */
     public function testAtlanticCity()
     {
         $atlantic = new AtlanticCity();
@@ -26,6 +29,9 @@ class AtlanticCityTest extends TestCase
         $this->assertInstanceOf(AtlanticCity::class, $atlantic);
     }
 
+    /**
+     * @covers App\AtlanticCity::getLyrics
+     */
     public function testGetLyrics()
     {
         $atlantic = new AtlanticCity();
@@ -37,6 +43,9 @@ class AtlanticCityTest extends TestCase
         $this->assertCount(35, $result);
     }
 
+    /**
+     * @covers App\AtlanticCity::getLyrics
+     */
     public function testGetLyricsCheckLyric()
     {
         $atlantic = new AtlanticCity();
@@ -50,6 +59,10 @@ class AtlanticCityTest extends TestCase
         $this->assertSame("Meet me tonight in Atlantic City", $result[34]);
     }
 
+    /**
+     * @covers App\AtlanticCity::getRandomLyric
+     * @uses App\AtlanticCity::getLyrics
+     */
     public function testGetRandomLyric()
     {
         $atlantic = new AtlanticCity();
@@ -69,6 +82,9 @@ class AtlanticCityTest extends TestCase
         $this->assertTrue(in_array($result3, $lyrics));
     }
 
+    /**
+     * @covers App\AtlanticCity::getCss
+     */
     public function testGetCss()
     {
         WP_Mock::userFunction('is_rtl', [
@@ -96,6 +112,9 @@ class AtlanticCityTest extends TestCase
         );
     }
 
+    /**
+     * @covers App\AtlanticCity::getCss
+     */
     public function testGetCssRight()
     {
         WP_Mock::userFunction('is_rtl', [
@@ -123,6 +142,11 @@ class AtlanticCityTest extends TestCase
         );
     }
 
+    /**
+     * @covers App\AtlanticCity::getHtmlOutput
+     * @uses App\AtlanticCity::getLyrics
+     * @uses App\AtlanticCity::getRandomLyric
+     */
     public function testGetHtmlOutput()
     {
         $atlantic = new AtlanticCity();
@@ -134,6 +158,9 @@ class AtlanticCityTest extends TestCase
         $this->assertRegExp('/^<p id="atlantic">[a-zA-Z\s\.\',]*<\/p>$/', $result);
     }
 
+    /**
+     * @covers App\AtlanticCity::run
+     */
     public function testRun()
     {
         $atlantic = new AtlanticCity();
