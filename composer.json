@@ -30,7 +30,7 @@
             "vendor/bin/phpcs --standard=psr12 src tests",
             "vendor/bin/phpstan analyse -l 7 src tests",
             "vendor/bin/phpunit --coverage-clover=coverage.xml",
-            "vendor/bin/phpmd src text",
+            "vendor/bin/phpmd src text ./ruleset.xml",
             "vendor/bin/phploc src"
         ]
     }
