@@ -160,7 +160,6 @@ class AtlanticCityTest extends TestCase
 
     /**
      * @covers App\AtlanticCity::run
-     * @doesNotPerformAssertions
      */
     public function testRun()
     {
@@ -171,6 +170,10 @@ class AtlanticCityTest extends TestCase
         WP_Mock::expectActionAdded('admin_head', [$atlantic, 'atlanticCss']);
 
         $atlantic->run();
+
+        $output = $this->getActualOutput();
+
+        $this->assertEmpty($output);
     }
 
     /**
