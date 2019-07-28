@@ -11,14 +11,17 @@ class AtlanticCityTest extends TestCase
 {
     public function setUp(): void
     {
-		WP_Mock::setUp();
-	}
+        WP_Mock::setUp();
+    }
 
-	public function tearDown(): void
+    public function tearDown(): void
     {
-		WP_Mock::tearDown();
-	}
+        WP_Mock::tearDown();
+    }
 
+    /**
+     * @covers App\AtlanticCity
+     */
     public function testAtlanticCity()
     {
         $atlantic = new AtlanticCity();
@@ -26,6 +29,9 @@ class AtlanticCityTest extends TestCase
         $this->assertInstanceOf(AtlanticCity::class, $atlantic);
     }
 
+    /**
+     * @covers App\AtlanticCity::getLyrics
+     */
     public function testGetLyrics()
     {
         $atlantic = new AtlanticCity();
@@ -37,6 +43,9 @@ class AtlanticCityTest extends TestCase
         $this->assertCount(35, $result);
     }
 
+    /**
+     * @covers App\AtlanticCity::getLyrics
+     */
     public function testGetLyricsCheckLyric()
     {
         $atlantic = new AtlanticCity();
@@ -50,6 +59,10 @@ class AtlanticCityTest extends TestCase
         $this->assertSame("Meet me tonight in Atlantic City", $result[34]);
     }
 
+    /**
+     * @covers App\AtlanticCity::getRandomLyric
+     * @uses App\AtlanticCity::getLyrics
+     */
     public function testGetRandomLyric()
     {
         $atlantic = new AtlanticCity();
@@ -69,6 +82,9 @@ class AtlanticCityTest extends TestCase
         $this->assertTrue(in_array($result3, $lyrics));
     }
 
+    /**
+     * @covers App\AtlanticCity::getCss
+     */
     public function testGetCss()
     {
         WP_Mock::userFunction('is_rtl', [
@@ -82,7 +98,8 @@ class AtlanticCityTest extends TestCase
         $method->setAccessible(true);
         $result = $method->invoke($atlantic);
 
-        $this->assertSame("<style type='text/css'>" .
+        $this->assertSame(
+            "<style type='text/css'>" .
             "#atlantic {" .
                 "float: left;" .
                 "padding-left: 15px;" .
@@ -95,6 +112,9 @@ class AtlanticCityTest extends TestCase
         );
     }
 
+    /**
+     * @covers App\AtlanticCity::getCss
+     */
     public function testGetCssRight()
     {
         WP_Mock::userFunction('is_rtl', [
@@ -108,7 +128,8 @@ class AtlanticCityTest extends TestCase
         $method->setAccessible(true);
         $result = $method->invoke($atlantic);
 
-        $this->assertSame("<style type='text/css'>" .
+        $this->assertSame(
+            "<style type='text/css'>" .
             "#atlantic {" .
                 "float: right;" .
                 "padding-right: 15px;" .
@@ -121,6 +142,11 @@ class AtlanticCityTest extends TestCase
         );
     }
 
+    /**
+     * @covers App\AtlanticCity::getHtmlOutput
+     * @uses App\AtlanticCity::getLyrics
+     * @uses App\AtlanticCity::getRandomLyric
+     */
     public function testGetHtmlOutput()
     {
         $atlantic = new AtlanticCity();
@@ -132,6 +158,9 @@ class AtlanticCityTest extends TestCase
         $this->assertRegExp('/^<p id="atlantic">[a-zA-Z\s\.\',]*<\/p>$/', $result);
     }
 
+    /**
+     * @covers App\AtlanticCity::run
+     */
     public function testRun()
     {
         $atlantic = new AtlanticCity();
@@ -140,6 +169,48 @@ class AtlanticCityTest extends TestCase
 
         WP_Mock::expectActionAdded('admin_head', [$atlantic, 'atlanticCss']);
 
-        $this->assertNull($atlantic->run());
+        $atlantic->run();
+
+        $output = $this->getActualOutput();
+
+        $this->assertEmpty($output);
+    }
+
+    /**
+     * @covers App\AtlanticCity::atlanticCity
+     * @uses App\AtlanticCity::getHtmlOutput
+     * @uses App\AtlanticCity::getLyrics
+     * @uses App\AtlanticCity::getRandomLyric
+     */
+    public function testAtlanticCityOutput()
+    {
+        $atlantic = new AtlanticCity();
+
+        $this->expectOutputRegex('/^<p id="atlantic">.+<\/p>$/');
+
+        $atlantic->atlanticCity();
+    }
+
+    /**
+     * @covers App\AtlanticCity::atlanticCss
+     * @uses App\AtlanticCity::getCss
+     */
+    public function testAtlanticCssOutput()
+    {
+        $atlantic = new AtlanticCity();
+
+        $this->expectOutputString(
+            "<style type='text/css'>" .
+            "#atlantic {" .
+                "float: right;" .
+                "padding-right: 15px;" .
+                "padding-top: 5px;" .
+                "margin: 0;" .
+                "font-size: 11px;" .
+            "}" .
+            "</style>"
+        );
+
+        $atlantic->atlanticCss();
     }
 }
