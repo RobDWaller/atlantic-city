@@ -44,6 +44,9 @@ class AtlanticCity
         "Meet me tonight in Atlantic City"
     ];
 
+    /**
+     * @return list<string>
+     */
     private function getLyrics(): array
     {
         return self::LYRICS;

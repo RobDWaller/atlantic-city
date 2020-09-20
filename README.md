@@ -56,4 +56,4 @@ WP_Mock::expectActionAdded('action', 'parameters');
 
 This plugin also integrates with a number of other code analysis tools, including [PHP Code Sniffer](https://packagist.org/packages/squizlabs/php_codesniffer) and [PHP Mess Detection](https://packagist.org/packages/phpmd/phpmd). This will help you improve the quality of the code you produce for WordPress plugins.
 
-It also shows how you can integrate with [PHP Stan](https://packagist.org/packages/phpstan/phpstan) so your code can be statically analysed. This requires a small amount of customisation due to custom WordPress functions. So there is a (phpstan config)[https://github.com/RobDWaller/atlantic-city/blob/master/phpstan.neon] setup to ignore function not found errors.
+It also shows how you can integrate with [PHPStan](https://phpstan.org) so your code can be statically analysed. This requires a small amount of customisation due to custom WordPress functions. So there is a [configuration file](/phpstan.neon.dist).
