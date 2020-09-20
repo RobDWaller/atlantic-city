@@ -1,16 +1,22 @@
 language: php
+os:
+  - linux
+dist: xenial
+
+cache:
+  directories:
+    - "${HOME}/.composer/cache"
 
 php:
-    - 7.1
-    - 7.2
     - 7.3
+    - 7.2
+    - 7.1
 
-before_script:
-    - travis_retry composer self-update
-    - travis_retry composer install --no-interaction --prefer-source --dev
+install:
+    - travis_retry composer update --no-interaction --prefer-source
 
 script:
-    - composer pipeline
+    - composer run-script pipeline
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
