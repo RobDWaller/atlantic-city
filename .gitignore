@@ -2,3 +2,5 @@ composer.lock
 vendor
 *.cache
 coverage.xml
+Dockerfile
+docker-compose.yml
