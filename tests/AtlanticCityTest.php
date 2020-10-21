@@ -22,7 +22,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity
      */
-    public function testAtlanticCity()
+    public function testAtlanticCity(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -32,7 +32,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity::getLyrics
      */
-    public function testGetLyrics()
+    public function testGetLyrics(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -46,7 +46,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity::getLyrics
      */
-    public function testGetLyricsCheckLyric()
+    public function testGetLyricsCheckLyric(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -63,7 +63,7 @@ class AtlanticCityTest extends TestCase
      * @covers App\AtlanticCity::getRandomLyric
      * @uses App\AtlanticCity::getLyrics
      */
-    public function testGetRandomLyric()
+    public function testGetRandomLyric(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -85,7 +85,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity::getCss
      */
-    public function testGetCss()
+    public function testGetCss(): void
     {
         WP_Mock::userFunction('is_rtl', [
             'times' => 1,
@@ -115,7 +115,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity::getCss
      */
-    public function testGetCssRight()
+    public function testGetCssRight(): void
     {
         WP_Mock::userFunction('is_rtl', [
             'times' => 1,
@@ -147,7 +147,7 @@ class AtlanticCityTest extends TestCase
      * @uses App\AtlanticCity::getLyrics
      * @uses App\AtlanticCity::getRandomLyric
      */
-    public function testGetHtmlOutput()
+    public function testGetHtmlOutput(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -161,7 +161,7 @@ class AtlanticCityTest extends TestCase
     /**
      * @covers App\AtlanticCity::run
      */
-    public function testRun()
+    public function testRun(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -182,7 +182,7 @@ class AtlanticCityTest extends TestCase
      * @uses App\AtlanticCity::getLyrics
      * @uses App\AtlanticCity::getRandomLyric
      */
-    public function testAtlanticCityOutput()
+    public function testAtlanticCityOutput(): void
     {
         $atlantic = new AtlanticCity();
 
@@ -195,7 +195,7 @@ class AtlanticCityTest extends TestCase
      * @covers App\AtlanticCity::atlanticCss
      * @uses App\AtlanticCity::getCss
      */
-    public function testAtlanticCssOutput()
+    public function testAtlanticCssOutput(): void
     {
         $atlantic = new AtlanticCity();
 
