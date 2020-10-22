@@ -32,7 +32,7 @@
     "scripts": {
         "pipeline": [
             "vendor/bin/phpcs --standard=psr12 src tests",
-            "vendor/bin/phpstan analyse --memory-limit 100M",
+            "vendor/bin/phpstan analyse",
             "vendor/bin/phpunit --coverage-clover=coverage.xml",
             "vendor/bin/phpmd src text ./ruleset.xml",
             "vendor/bin/phploc src"
