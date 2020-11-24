@@ -2,17 +2,17 @@
 
 [![Build Status](https://travis-ci.org/RobDWaller/atlantic-city.svg?branch=master)](https://travis-ci.org/RobDWaller/atlantic-city) [![codecov](https://codecov.io/gh/RobDWaller/atlantic-city/branch/master/graph/badge.svg)](https://codecov.io/gh/RobDWaller/atlantic-city) ![PHP Version Support](https://img.shields.io/travis/php-v/RobDWaller/atlantic-city/master)
 
-A Composer based WordPress plugin which displays lyrics from the song Atlantic City in the WordPress admin.
+A Composer based WordPress plugin which displays lyrics from the song [Atlantic City](https://en.wikipedia.org/wiki/Atlantic_City_(song)) in the WordPress admin.
 
-This plugin was developed to show how to create WordPress plugins which are hosted on [Packagist](https://packagist.org/) and work with Composer friendly WordPress frameworks like [Dusty](https://packagist.org/packages/rbdwllr/dusty).
+This plugin was created to show developers how to create WordPress plugins which are hosted on [Packagist](https://packagist.org/) and work with Composer friendly WordPress frameworks like [Dusty](https://packagist.org/packages/rbdwllr/dusty).
 
-It also highlights how to write unit tests for WordPress plugins using [WP_Mock](https://packagist.org/packages/10up/wp_mock) and how to integrate with code analysis tools like [PHPStan](https://packagist.org/packages/phpstan/phpstan).
+It also highlights how to write unit tests for WordPress plugins using [WP_Mock](https://packagist.org/packages/10up/wp_mock) and how to integrate with static analysis tools like [PHPStan](https://packagist.org/packages/phpstan/phpstan).
 
 ## Composer Setup
 
-There is only one thing different about a WordPress plugin built with Composer compared to standard PHP packages, which is the package type. With WordPress plugins you set the type to wordpress-plugin in the [Composer.json file](https://github.com/RobDWaller/atlantic-city/blob/master/composer.json).
+There is only one difference between a WordPress plugin built with Composer compared to a standard PHP package, which is the package type. With WordPress plugins you set the type to `wordpress-plugin` in the [Composer.json file](https://github.com/RobDWaller/atlantic-city/blob/master/composer.json).
 
-```javascript
+```json
 "type": "wordpress-plugin",
 ```
 
@@ -20,7 +20,7 @@ This simply tells Composer friendly WordPress frameworks how to handle the packa
 
 ## Unit Tests with WP_Mock
 
-To write unit tests for WordPress you need to use a package called [WP_Mock](https://packagist.org/packages/10up/wp_mock). It is an extension of PHP Unit which allows you to mock WordPress' custom function calls.
+To write unit tests for WordPress you need to use a package called [WP_Mock](https://packagist.org/packages/10up/wp_mock). It is an extension of PHP Unit which allows you to mock WordPress custom function calls.
 
 For instance this library's [unit tests](https://github.com/RobDWaller/atlantic-city/blob/master/tests/AtlanticCityTest.php) mock the `is_rtl()` function which tells WordPress if the site's text runs from right to left or left to right.
 
@@ -54,6 +54,6 @@ WP_Mock::expectActionAdded('action', 'parameters');
 
 ## Other Code Analysis Tools
 
-This plugin also integrates with a number of other code analysis tools, including [PHP Code Sniffer](https://packagist.org/packages/squizlabs/php_codesniffer) and [PHP Mess Detection](https://packagist.org/packages/phpmd/phpmd). This will help you improve the quality of the code you produce for WordPress plugins.
+This plugin integrates with a number of static analysis tools, including [PHP Code Sniffer](https://packagist.org/packages/squizlabs/php_codesniffer) and [PHP Mess Detection](https://packagist.org/packages/phpmd/phpmd), which will help improve the code quality of the WordPress plugins you produce.
 
-It also shows how you can integrate with [PHPStan](https://phpstan.org) so your code can be statically analysed. This requires a small amount of customisation due to custom WordPress functions. So there is a [configuration file](/phpstan.neon.dist).
+It also shows you how to integrate with [PHPStan](https://phpstan.org) to add some type safety to your code. This requires a small amount of customisation to handle WordPress so there is a [configuration file](/phpstan.neon.dist) and an integration with the [szepeviktor/phpstan-wordpress](https://packagist.org/packages/szepeviktor/phpstan-wordpress) package which extends PHPStan for WordPress.
