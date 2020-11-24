@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=7.4.0"
     },
     "require-dev": {
         "10up/wp_mock": "^0.4",
