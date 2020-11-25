@@ -1,6 +1,6 @@
 # Atlantic City
 
-[![Build Status](https://travis-ci.org/RobDWaller/atlantic-city.svg?branch=master)](https://travis-ci.org/RobDWaller/atlantic-city) [![codecov](https://codecov.io/gh/RobDWaller/atlantic-city/branch/master/graph/badge.svg)](https://codecov.io/gh/RobDWaller/atlantic-city) ![PHP Version Support](https://img.shields.io/travis/php-v/RobDWaller/atlantic-city/master)
+[![Actions Status](https://github.com/robdwaller/atlantic-city/workflows/ci/badge.svg)](https://github.com/robdwaller/atlantic-city/actions) [![codecov](https://codecov.io/gh/RobDWaller/atlantic-city/branch/master/graph/badge.svg)](https://codecov.io/gh/RobDWaller/atlantic-city) ![PHP Version Support](https://img.shields.io/packagist/php-v/rbdwllr/atlantic-city)
 
 A Composer based WordPress plugin which displays lyrics from the song [Atlantic City](https://en.wikipedia.org/wiki/Atlantic_City_(song)) in the WordPress admin.
 
