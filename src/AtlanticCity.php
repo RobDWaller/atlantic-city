@@ -54,7 +54,7 @@ class AtlanticCity
 
     private function getRandomLyric(): string
     {
-        return $this->getLyrics()[rand(0, 34)];
+        return $this->getLyrics()[rand(0, count($this->getLyrics()) - 1)];
     }
 
     private function getCss(): string

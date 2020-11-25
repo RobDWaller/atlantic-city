@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Atlantic City
- * @version 0.1.0
+ * @version 0.3.0
  *
  * @wordpress-plugin
  * Plugin Name: Atlantic City
  * Plugin URI: https://github.com/RobDWaller/atlantic-city
  * Description: A Composer based WordPress plugin which displays lyrics from the song Atlantic City in the WordPress admin.
  * Author: Rob Waller
- * Version: 0.1.0
+ * Version: 0.3.0
  * Author URI: http://rbrt.wllr.info
  */
 
