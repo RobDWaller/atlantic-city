@@ -24,10 +24,10 @@ jobs:
       run: composer validate --strict
 
     - name: Install Composer Dependencies 
-      run: composer install --no-interaction --prefer-source
+      run: composer install --no-interaction --prefer-dist
     
     - name: Run Tests
-      run: composer pipeline
+      run: composer run-script pipeline
 
     - name: Code Coverage
       run: bash <(curl -s https://codecov.io/bash)
